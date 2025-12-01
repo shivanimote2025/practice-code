@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        .myClass
+        {
+            color: red;
+        }
+        .newClass
+        {
+            background-color: green;
+        }
+        div{
+            height: 100px;
+            width: 150px;
+            background-color: aquamarine;
+            border: 1px solid black;
+        }
+        input
+        {
+            margin: 10px;
+            font-size: 20px;
+        }
+
+        .list
+        {
+            background-color: blueviolet;
+            margin: 40px;
+            padding: 7px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+   <p class="myClass">This is paragraph.</p>
+   <button onclick="this.innerHTML=Date()">Click here to see today's date</button>
+   <button id="btn" onclick="displayDate()">SeeDate</button>
+   <p id="demo"></p>
+   <div onmouseover="change()" id="d" onmouseout="changeText()">This is a box</div>
+   <label for="">Enter Name:</label><input type="text" oninput="upper()" id="u"><br>
+   <label for="">LastName:</label><input type="text" id="lname" onchange="toUpper()">
+   <div onmousedown="mouseDown()" id="md" onmouseup="mouseUp()">
+    onmousedown and onmouseup
+   </div>
+
+   <div class="list">
+    <ul id="myul">
+        <li>Javascript</li>
+    </ul>
+   </div>
+</body>
+<script>
+    //created a button element and styled it
+
+    let newBtn=document.createElement("button")
+    newBtn.innerText="Click Me"
+    newBtn.style.backgroundColor="red"
+    newBtn.style.color="white"
+    document.querySelector("body").prepend(newBtn)
+
+    let para=document.querySelector(".myClass")
+    //para.setAttribute("class","newClass")  //first style will be removed.
+    para.classList.add("newClass")//using classList.add()  old class is also present.
+
+    document.getElementById("btn").style.margin="20px"
+    
+
+    //onclick()  when we click button it will display todays date
+    function displayDate()
+    {
+       document.getElementById("demo").innerHTML=Date(); 
+    }
+
+    //onmouseover()  when we hover the mouse on box it will change inner text 
+    function change()
+    {
+        document.getElementById("d").innerText="mouse over"
+    }
+
+    
+    //onmouseout() when we hover mouse out of box again it wll change inner text
+    function changeText()
+    {
+        document.getElementById("d").innerText="mouse out"
+    }
+
+    
+    //oninput()  when we type input data at that time it will give us capital letters
+    function upper()
+    {
+        let name=document.getElementById("u");
+        name.value=name.value.toUpperCase()
+    }
+    
+
+    //onchange()  when we type data on input field 
+    // if we typed it in small letter but  after that it will change it in capital letters
+    function toUpper()
+    {
+        let lname=document.getElementById("lname");
+        lname.value=lname.value.toUpperCase()
+    }
+
+    //when we click on the box it will change the text 
+    function mouseDown()
+    {
+        document.getElementById("md").innerText="Thank you"
+    }
+
+        function mouseUp()
+    {
+        document.getElementById("md").innerText="Good bye"
+    }
+
+    //create and append childnode
+
+    function addListitems(language)
+    {
+        let li=document.createElement('li')
+        let myul=document.getElementById('myul')
+        li.appendChild(document.createTextNode(language));
+        myul.appendChild(li)
+    }
+    addListitems("Html")
+    addListitems("Css")
+    addListitems("Python")
+
+    //Edit li nth-child
+
+    let thirdchild=document.querySelector("li:nth-child(3)")
+    console.log(thirdchild.innerHTML)
+
+    let newli=document.createElement("li")
+    newli.textContent="Java"
+    let ul=document.getElementById("myul")
+    thirdchild.replaceWith(newli)
+
+    
+    //Remove last child
+
+    let lastchild=document.querySelector("li:last-child")
+    lastchild.remove()
+
+    
+</script>
+</html>

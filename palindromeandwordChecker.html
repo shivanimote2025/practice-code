@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome and Word Checker</title>
+    <style>
+        .container
+        {
+            justify-items: center;
+            margin: auto;
+            height: 250px;
+            width: 400px;
+            border: 1px black solid;
+            background-color: aqua;
+            border-radius: 5px;
+        }
+        h2
+        {
+            color: rgb(28, 28, 109);
+            font-style: italic;
+        }
+        input
+        {
+            height: 30px;
+            width: 320px;
+            border: none;
+            border-radius: 5px;
+            font-size: larger;
+            color:darkblue;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .btns
+        {
+            margin: 10px;
+            padding: 15px;
+            /* background-color: azure; */
+        }
+        #btn1
+        {
+            padding: 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: blueviolet;
+            color: white;
+        }
+         #btn2
+        {
+            margin: 4px;
+            padding: 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: blueviolet;
+            color: white;
+        }
+         #btn3
+        {
+            margin: 4px;
+            padding: 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: blueviolet;
+            color: white;
+            
+        }
+
+        #result
+        {
+            background-color: rgb(43, 226, 98);
+            font-size: 25px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            <h2>Palindrome and word checker!</h2>
+            <input type="text"id="val">
+        </div>
+        <div class="btns">
+            <button id="btn1" onclick="checkPalindrome()">Check Palindrome</button>
+            <button id="btn2" onclick="countChar()">Count Characters</button>
+            <button id="btn3" onclick="countVowels()">Count Vowels</button>
+        </div>   
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkPalindrome()
+        {
+            let number=document.getElementById("val").value;
+            if(number==="")
+        {
+            document.getElementById("result").innerText="Please enter a number"
+            return;
+        }
+            let num=Number(number);
+            let no=num;
+            let rev_num=0;
+            while(no>0)
+        {
+            let rem=no%10;
+            rev_num=rev_num*10+rem;
+            no=Math.floor(no/10);
+        }
+        if(num===rev_num)
+        {
+            document.getElementById("result").innerText=`${num} is a palindrome`;
+        }
+        else
+        {
+            document.getElementById("result").innerText=`${num} is not a palindrome`;
+        }
+        }
+
+        function countChar()
+        {
+            let word=document.getElementById("val").value;
+            if(word==="")
+        {
+            document.getElementById("result").innerText="Please enter a string";
+            return;
+        }
+            document.getElementById("result").innerHTML=word.length;
+        }
+
+        function countVowels()
+        {
+            let str=document.getElementById("val").value;
+           
+            if(str==="")
+        {
+            document.getElementById("result").innerText="Please enter string";
+            return;
+        }
+
+        str=str.toLowerCase();
+        let count=0;
+        let vowels="aeiou";
+        for(let i=0;i<=str.length;i++)
+        {
+            if(vowels.includes(str[i]))
+        {
+            count++;
+        }
+        }
+        document.getElementById("result").innerText=count++;
+        }
+    </script>
+</body>
+</html>

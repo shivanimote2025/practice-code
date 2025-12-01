@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark-Light Mode</title>
+    <style>
+        .light
+        {
+            background-color: white;
+            color: black;
+        }
+        .dark
+        {
+            background-color: black;
+            color: white;
+        }
+
+        ol
+        {
+            height: 80px;
+            width: 80px;
+            border: 1px solid black;
+        }
+
+        .container
+        {
+            height: 30vmin;
+            width: 60vmin;
+            border: 1px solid black;
+            text-align: center;
+            background-color: orange;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <button id="mode">clickme</button>
+    <p>This is a paragraph</p>
+
+    <ol onmouseover="changeColor()">
+        <li>Mango</li>
+        <li>Orange</li>
+        <li>Apple</li>
+    </ol>
+
+    <div class="container" id="text">
+        <p >This div element has an onmousemove event handler that displays a random number every time you move your mouse inside this orange field.</p>
+        <button id="btn" onclick="removeEvent()">Remove</button>
+    </div>
+    <p id="randomnum"></p>
+
+    <div>
+        <button id="click">click</button>
+    </div>
+    <p id="demo"></p>
+   
+   
+</body>
+<script>
+    let modebtn=document.querySelector("#mode")
+    let body=document.querySelector("body");
+    let currmode="light";
+
+    // modebtn.addEventListener("click",()=>{
+    //     if(currmode=="light")
+    // {
+    //     currmode="dark";
+    //     document.querySelector("body").style.backgroundColor="black";
+    // }
+    // else
+    // {
+    //     currmode="light";
+    //     document.querySelector("body").style.backgroundColor="white";
+    // }
+    // })
+
+
+    //we can do the same using add classw   
+
+    modebtn.addEventListener("click",function(){
+        if(currmode==="light")
+    {
+        currmode="dark";
+        body.classList.add("dark");
+        body.classList.remove("light");
+    }
+    else
+    {
+        currmode="light";
+        body.classList.add("light")
+        body.classList.remove("dark")
+    }
+    })
+     
+    //we can use addEventListener() method to add two clicks on same button without overwriting.
+
+    modebtn.addEventListener("click",function(){
+        alert("hello this is mode Changer")
+    })
+    
+    // we can also remove eventListener
+
+    const myDiv=document.getElementById("text")
+
+    myDiv.addEventListener("mousemove",changeRandomnum)
+
+    function changeRandomnum()
+    {
+        document.getElementById("randomnum").innerHTML=Math.random()*10
+    }
+
+    function removeEvent()
+
+    {
+        let remove=document.getElementById("text")
+        remove.removeEventListener("mousemove" , changeRandomnum)
+    }
+
+
+
+    //add many events to same button
+
+    let ebtn=document.getElementById("click")
+
+    ebtn.addEventListener("mouseover" , one)
+    ebtn.addEventListener("click",two)
+    ebtn.addEventListener("mouseout",three)
+
+    function one()
+    {
+        let onetext=document.getElementById("demo");
+        onetext.innerHTML=onetext.innerHTML+"Mouse Over! <br>"
+    }
+
+    function two()
+    {
+       let twotext= document.getElementById("demo");
+       twotext.innerHTML=twotext.innerHTML+"Clicked! <br>"
+    }
+
+    function three()
+    {
+        let thirttext=document.getElementById("demo");
+        thirttext.innerHTML=thirttext.innerHTML+"Mouse Out! <br>"
+    }
+
+
+
+
+</script>
+</html>

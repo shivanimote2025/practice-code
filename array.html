@@ -1,0 +1,385 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.write("<h3>declaration and access elements of an array</h3>");
+        const myArr=[1,2,3,'shivani',false,4.8]//collection of different datatypes/index starts from 0
+        document.write(myArr[1])
+
+        document.write("<h3>find length of array</h3>");
+        document.write(myArr.length)
+
+        
+        document.write("<h3>Anather way to declare array</h3>")
+        const arr=new Array(1,2,3,4,5,true,'a')
+        document.write(arr[4])
+        document.write(arr.length)
+
+        document.write("<h3>Array Methods</h3>")
+       // myArr.push(28)//add elements at last
+        //document.write(myArr)
+
+        //myArr.pop()//remove last element 
+        //document.write(myArr)
+
+        //myArr.unshift('true')//add start
+        //document.write(myArr)
+         
+        // myArr.shift()//remove start element
+        // document.write(myArr)
+         
+        //includes method gives true false result
+        // document.write(myArr.includes(1))//true
+        // document.write(myArr.includes(0))//false
+
+        //indexOf method gives index
+        // document.write(myArr.indexOf(6))//-1 there is no element 
+        // document.write(myArr.indexOf(4.8))
+        // arr=[1,2,3,4,5,2,4.8]
+       // arr.indexOf(2)
+
+
+        // const newArr=myArr.join(',')//join converts array to starting
+        // document.write(myArr)//[1,2,3,'shivani',false,4.8]
+        // document.write(typeof newArr)//string  1,2,3,'shivani',false,4.8
+
+        // const ar=myArr.slice(1,3)
+        // document.write(ar)//[2,3] not give the element at inndex 3
+
+        // const ar1=myArr.splice(1,3)
+        // document.write(ar1)//[2,3,shivani] 
+        // document.write(myArr)//after slice method if we print origanal array then it removes 
+                             //[2,3,shivani] and give only [1,false,4.8]
+        
+        const cars=['BMW','Fortuner','Desire','Punch']
+        const digit=[1,2,3,4,5]
+        const char=['s','h','i','v','a','n','i']
+
+        //cars.push(digit)//it will add array inside array this is not correct way to combine array 
+        // document.write(cars)//['BMW','Fortuner','Desire','Punch',[1,2,3,4,5]]
+        // document.write(cars[4])//[1,2,3,4,5]
+        //document.write(cars[4][2])//3
+         
+        const all_elements=cars.concat(digit) //concat method combines two array and give one array
+        document.write(all_elements) //['BMW','Fortuner','Desire','Punch',1,2,3,4,5]
+        //document.write(all_elements[4])//1
+        //document.write(all_elements.length)
+
+        //const carsdigits_elements=[...cars, ...digit, ...char]//spread method also combine array
+        //document.write(carsdigits_elements)
+        //document.write(carsdigits_elements.length)
+
+        // const newArr=[2,3,4,5,6,[34,4,3,1],['s','h',true,[1,2]]]
+        // document.write(newArr.length)//7
+        // const all_newArr=newArr.flat(Infinity)//flat operator converts all array elements in single array
+        // document.write(all_newArr.length)//14
+
+        //document.write(Array.isArray('fruits'))//false there is no array whose name is fruits
+        document.write(Array.from('fruits'))//from converts it in array [f,r,u,i,t,s]
+        let fruit1=apple;
+        let car=bmw;
+        let animal=dog;
+        document.write(Array.of(fruit1,car,animal));//it gives the array of elements [apple,bmw,dog]
+        
+
+        
+
+
+       
+        
+        
+
+        
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Array and Array Functions forEach(),map(),filter() -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Functionss</title>
+</head>
+<body>
+    <script>
+        //Q1: Write a function that counts how many words are in a sentence.
+
+        function countWords(sentence)
+        {
+            document.write("Word count:",sentence.split(" ").length,"<br>");    
+        }
+        countWords("hello js how are you abcd bye good morning")
+
+
+        //Q2: Write a function that takes an array of numbers and returns their average.
+
+        function numArr(numarr)
+        {
+            let sum=0;
+           for(i=0;i<numarr.length;i++)
+           {
+             sum=sum+numarr[i];
+           }
+           return Math.floor(sum/numarr.length);
+        }
+        document.write(numArr([2,1,3,4]),"<br>")
+
+
+
+
+
+        //Q3: Write a function that takes an array of strings and returns only those that start with a vowel.
+        
+        function strStartsWithVowels(inputStr)
+        {
+           return inputStr.filter(word=>{
+            if(word[0]=="a" || word[0]=="e" || word[0]=="i" || word[0]=="o"|| word[0]=="u" || 
+                word[0]=="A" || word[0]=="E" || word[0]=="I" || word[0]=="O" || word[0]=="U"
+            )
+           {
+            return word[0];
+           }
+           });
+        }
+        let arrStr=["shivani","apple","rabbit","elephent","icecream","banana","Abcd"]
+        document.write(strStartsWithVowels(arrStr),"<br>")
+
+
+
+
+
+        //Q4: Write a function that takes a string and returns all unique characters.
+
+        // function uniqueChar(word)
+        // {
+
+        //    let words=word.split(" ").join(",");
+        //   for(let ch of words)
+        //   {
+        //       let uchar=" ";
+        //       if(words.indexOf(ch)===words.lastIndexOf(ch))
+        //         {
+        //             document.write(uchar+ch,"<br>");
+        //         }
+        //   }   
+        // }
+        // uniqueChar("hello")
+
+
+        function uniqueChar(ipt_str)
+        {
+           let u_char="";
+           for(let i=0;i<=ipt_str.length;i++)
+           {
+            if(!u_char.includes(ipt_str[i]))
+           {
+                u_char=u_char+ipt_str[i];
+           }
+           }
+          document.write(u_char,"<br>");
+        }
+        uniqueChar("success")
+        //document.write(unique_c,"<br>")
+
+
+
+
+
+
+
+
+        //Q5: Write a function to find the longest word in a sentence.
+
+        function longWord(sen)
+        {
+            let splitSen=sen.split(" ")
+            let longword=splitSen[0];
+
+            for(let w of splitSen)
+        {
+            if(w.length>longword.length)
+            {
+                longword=w;   
+            }   
+        }
+         document.write(longword,"<br>")
+        }
+        longWord("javascript is a programming language hello good morning")
+
+
+
+
+
+        //shortest word from string
+
+        function shortestWord(sentence)
+        {
+            let split_sen=sentence.split(" ")
+            let s_word=split_sen[0];
+
+            for(let word of split_sen)    
+            {
+                if(word.length<s_word.length)
+                {
+                   s_word=word;
+                }
+            }
+            return s_word
+        }
+        const shortword=shortestWord("abcd jdhfghs kdhhfjd");
+        document.write(shortword,"<br>")
+
+
+
+
+
+        //Q6: Write a function to remove duplicate values from an array.
+        
+
+        //arr[1,2,3,4,5,3] 
+        // arr1[1,2,3,4,5]  
+        
+
+
+
+        function removeDuplicates(iptArr)
+        {
+            let uniqueArr=[];
+            //uniqueArr[0]=iptArr[0];
+            for(i=0;i<iptArr.length;i++)
+        {
+            if(!uniqueArr.includes(iptArr[i]))
+        {
+            uniqueArr.push(iptArr[i]); 
+        }
+        }
+            return uniqueArr;
+        }
+        document.write(removeDuplicates([1,2,33,4,33,5,6,5,4,101,2]),"<br>")
+
+
+
+
+        //Q:7 Write a function that joins an array of words into a single sentence.
+        //arr=["my","name","is","shivani"]
+
+
+        function getsenFromarrOfWords(arr)
+        {
+            let sentence="";
+            for(i=0;i<arr.length;i++)
+        {
+            sentence=sentence + ' ' + arr[i];
+        }
+        return sentence
+        }
+        let result=getsenFromarrOfWords(["hello","what","is","your","name","?"])
+        document.write(result,"<br>")
+
+
+
+
+        //Q:8 Write a function that finds how many times a specific number appears in an array.
+        //arr[1,2,3,4,5,2,2,4,3,] 1:1 2:3 3:2 4:2
+
+
+        // function getNumberOccurence(num)
+        // {
+        //     let count=0;
+        //     let d_ele=[];
+        //     d_ele[0]=num[0];
+        //    for(i=1;i<num.length;i++)
+        //    {
+        //     if(!d_ele[idx].includes(num[i]))
+        //    {
+        //     num[i]++;
+        //     count=1;
+        //    }
+        //    else
+        //    {
+        //     count++;
+        //    }
+        //    }
+        //    return count;
+        // }
+        // let rst=getNumberOccurence([1,2,3,4,5,2,2,4,3,5])
+        // document.write(rst)
+
+        
+
+
+
+
+
+
+
+         //Q.9: Write a function that takes an array of numbers and returns a new array with only odd numbers.
+
+
+        function oddNumArr(input)
+        {
+            let arr1=[];
+            for(i=0;i<input.length;i++)
+        {
+            if(input[i]%2!=0)
+        {
+            arr1.push(input[i])
+        }
+        }
+        return arr1;
+        }
+
+        let Arres=oddNumArr([1,2,3,4,5,6,75,7,23,12])
+        document.write(Arres,"<br>")
+
+
+
+
+
+        //Q.10: Write a function that checks if all elements in an array are numbers.
+        //arr[1,2,"sh","h",true,false]  arr[i]>=0 
+        
+        
+
+        function checkarrOfNum(input_arr)
+        {
+            let numArr=[];
+           for(i=0;i<input_arr.length;i++)
+           {
+            if(input_arr[i]>=0)
+           {
+             numArr.push(input_arr[i]); 
+           }
+           }
+           return numArr
+        }
+        let output=checkarrOfNum([1,2,"sh","h",true,false,1.3,"a",'adewdwdqsqAX',"/","@"])
+        document.write(output)    
+    
+    </script>
+</body>
+</html>

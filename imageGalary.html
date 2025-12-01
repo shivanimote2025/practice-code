@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        *
+        {
+            padding: 0;
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body
+        {
+            background-color: cyan;
+        }
+
+        .container
+        {
+            text-align: center;
+            margin: 8px;
+            color: black;
+            
+        }
+
+        .gallery
+        {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        img:hover
+        {
+            border-radius: 10px;
+            box-shadow:  10px black;
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+
+        #large-image
+        {
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Gallery</h1>
+        <div class="gallery"></div>
+    </div>
+
+    
+    <div id="large-image"></div>
+
+    <script>
+        let pictures=[
+            'thumbnails/1.jpg',
+            'thumbnails/2.jpg',
+            'thumbnails/3.jpg',
+            'thumbnails/4.jpg',
+            'thumbnails/5.jpg',
+            'thumbnails/6.jpg',
+            'thumbnails/7.jpg',
+            'thumbnails/8.jpg',
+            'thumbnails/9.jpg',
+            'thumbnails/10.jpg',
+            'thumbnails/11.jpg'
+        ]
+
+        for(let i=0;i<pictures.length;i++)
+    {
+        let gallery=document.querySelector(".gallery")
+
+        let img=document.createElement('img')
+        img.src=pictures[i]
+        gallery.appendChild(img)
+        img.style.height="150px"
+        img.style.width="150px"
+        img.style.margin="6px"
+
+        img.addEventListener("click",function()
+        {
+            let image=document.getElementById("large-image")
+
+            image.innerHTML = "";
+
+            let largeimg = document.createElement("img");
+            largeimg.src = img.src;
+            largeimg.style.height = "350px";
+            largeimg.style.width = "350px";
+            largeimg.style.borderRadius = "10px";
+            largeimg.style.boxShadow = "10px gray";
+
+            image.appendChild(largeimg)
+        })
+    }
+          
+
+        
+    </script>
+    
+</body>
+</html>

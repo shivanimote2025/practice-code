@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Game</title>
+
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        body
+        {
+            margin: auto;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            background-color: rgb(98, 98, 129);
+            color: white;
+        }
+
+        .container
+        {
+            margin: auto;
+            padding: 20px;
+            height: 400px;
+            width: 400px;
+        }
+        .game
+        {
+            margin: auto;
+            height: 300px;
+            width: 300px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn
+        {
+            height: 80px;
+            width: 80px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            border-radius: 4px;
+            font-size:40px;
+            /* box-shadow: 0 0 0 2px black; */
+            background-color: antiquewhite;
+        }
+
+        main
+        {
+            margin-top:100px;
+        }
+
+        #reset
+        {
+            margin: 90px;
+            height: 30px;
+            width: 100px;
+            border: none;
+            border-radius: 3px;
+            background-color: ghostwhite;
+            color: black;
+            font-size: medium;
+            padding: 7px;
+        }
+
+        .hide
+        {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="msgcontainer">
+        <p id="winmsg"></p>
+        <button id="new">NewGame</button>
+    </div>
+    
+    <main>
+        <h1>Tic Tac Toe</h1>
+        <div class="container">
+            <div class="game">
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+            </div>
+            <button id="reset">ResetGame</button>
+        </div>
+    </main>
+
+    <script>
+        let btns=document.querySelectorAll(".btn")
+        let msg=document.getElementById("winmsg")
+        let msgContainer=document.querySelector(".msgcontainer")
+        let newgame=document.getElementById("new")
+        let resetgame=document.getElementById("reset")
+
+        let turnO=true
+
+        let winPattern=[
+            [0,1,2],
+            [0,3,6],
+            [0,4,8],
+            [1,4,7],
+            [2,5,8],
+            [2,4,6],
+            [3,4,5],
+            [6,7,8]
+        ]
+
+
+        
+
+        btns.forEach(function(btn)
+        {
+            btn.addEventListener("click",function(){
+                if(turnO)
+            {
+                console.log("0")
+                btn.innerHTML="0"
+                btn.style.color="red"
+                turnO=false
+            }
+            else
+            {
+                console.log("x")
+                btn.innerHTML="X"
+                btn.style.color="green"
+                turnO=true
+            }
+            btn.disabled=true;
+            checkWinner();
+            }) 
+        })
+
+       
+
+        function  checkWinner()
+        {
+            for(let pattern of winPattern)
+        {
+            let val1=btns[pattern[0]].innerText;
+            let val2=btns[pattern[1]].innerText;
+            let val3=btns[pattern[2]].innerText;
+
+            if(val1 != "" && val2 != "" && val3 != "")
+        {
+            if(val1===val2 && val2===val3)
+        {
+            showWinner(val1)
+        }
+        }
+        }
+        }
+
+        
+        function showWinner(val1)
+        {
+           msg.innerHTML="Congratulations you are winner!"
+           disablebtn(); 
+        }
+
+
+         
+        function  disablebtn()
+        {
+            for(let btn of btns)
+        {
+            btn.disabled=true;
+        }
+        }
+
+        // function resetgame()
+        // {
+        //     turnO=true;
+        //     enablebtn();
+            
+        // }
+
+
+        function enablebtn()
+        {
+            for(let btn of btns)
+        {
+            btn.disabled=false;
+            btn.innerHTML=""
+        }
+        }
+
+        newgame.addEventListener("click",resetgame)
+
+
+
+
+       
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Game</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body{
+            text-align: center;
+            background-color: aquamarine;
+        }
+
+
+        .container
+        {
+            height:70vh;
+            /* border: 1px solid black;  */
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+        }
+
+
+        .btns
+        {
+            height:18vmin;
+            width: 18vmin;
+            border: none;
+            border-radius:8px;
+            background-color:wheat;
+            color: black;
+            font-size: 7vmin;
+        }
+
+
+        .btn{
+            height: 60vmin;
+            width: 60vmin; 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5vmin;
+        
+        }
+
+
+
+
+        #msg
+        {
+            font-size:30px;
+            color: brown;
+        }
+
+        #newgame
+        {
+            height: 40px;
+            width: 100px;
+            margin: 20px;
+            background-color: grey;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+
+        #reset
+        {
+            height: 40px;
+            width: 100px;
+            margin: 10px;
+            background-color: grey;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .hide
+        {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="containerclass hide">
+        <p id="msg">winner</p>
+        <button id="newgame">New Game</button>
+    </div>
+    <h2>Tic Tac Toe</h2>
+    <div class="container">
+        <div class="btn">
+            <button class="btns"></button>
+            <button class="btns"></button>
+            <button class="btns"></button>
+            <button class="btns"></button>
+            <button class="btns"></button>
+            <button class="btns"></button>
+            <button class="btns"></button>
+            <button class="btns"></button>
+            <button class="btns"></button>
+        </div>
+    </div>
+    <button id="reset">Reset Game</button>
+
+    <script>
+        let btns=document.querySelectorAll(".btns")
+        let reset=document.querySelector("#reset")
+        let newgamebtn=document.querySelector("#newgame")
+        let containermsg=document.querySelector(".containerclass")
+        let msg=document.querySelector("#msg")
+
+        let turnO=true;
+        const winPatterns=[
+            [0,1,2],
+            [0,3,6],
+            [0,4,8],
+            [1,4,7],
+            [2,5,8],
+            [2,4,6],
+            [3,4,5],
+            [6,7,8]
+        ]
+
+        btns.forEach(function(btn){
+            btn.addEventListener("click",()=>{
+                if(turnO)
+            {
+                btn.innerText="O";
+                btn.style.color="red"
+                turnO=false;
+            }
+            else
+            {
+                btn.innerText="X";
+                btn.style.color="green"
+                turnO=true
+            }
+            btn.disabled=true;
+
+            checkWinner();
+            })
+        })
+
+
+
+        function checkWinner()
+        {
+            for(let pattern of winPatterns)
+        {
+            let val1=btns[pattern[0]].innerText;
+            let val2=btns[pattern[1]].innerText;
+            let val3=btns[pattern[2]].innerText;
+
+            if(val1 != "" && val2 != "" && val3 != "")
+        {
+            if(val1 === val2 && val2 === val3)
+        {
+            showWinner(val1)
+        }
+        }
+        }
+        }
+
+        function showWinner(val1)
+        {
+            msg.innerText=`Congratulations ${val1} you are winner!`
+            containermsg.classList.remove("hide")
+            disabledbtns(); 
+        }
+
+
+        function disabledbtns()
+        {
+            for(let btn of btns)
+        {
+           btn.disabled=true;
+        }
+        }
+
+
+        function resetgame()
+        {
+            turnO=true;
+            enablebtns();
+            containermsg.classList.add("hide")
+        }
+
+        function enablebtns()
+        {
+            for(let btn of btns)
+        {
+            btn.disabled=false;
+            btn.innerText="";
+        }
+        }
+
+        newgamebtn.addEventListener("click",resetgame)
+        reset.addEventListener("click",resetgame)
+
+
+       
+    </script>
+</body>
+</html>

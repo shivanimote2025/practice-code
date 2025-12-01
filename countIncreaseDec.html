@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        .container
+        {
+            margin: auto;
+            text-align: center;
+        }
+        .btn
+        {
+            margin: 20px;
+            padding: 10px;
+        }
+        .btn1
+        {
+            height: 30px;
+            width:60px;
+            border:1px solid black;
+            color: white;
+            font-size: large;
+            background-color: blueviolet;
+            border-radius: 5px;
+
+        }
+        #count
+        {
+            font-size: 5em;
+            color: rgb(113, 13, 113);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Counter</h1>
+        <p id="count">0</p>
+        <div class="btn">
+            <button class="btn1" onclick="decrease()">-</button>
+            <button class="btn1" onclick="reset()">Reset</button>
+            <button class="btn1" onclick="increase()">+</button>
+        </div>
+    </div>
+
+    <script>
+        let count=0;
+        function increase()
+        {
+            count++;
+            document.getElementById("count").innerText= count;
+        }
+        function decrease()
+        {
+            count--;
+            document.getElementById("count").innerText= count;
+        }
+        function reset()
+        {
+            count=0;
+            document.getElementById("count").innerText= count;
+        }
+    </script>
+</body>
+</html>

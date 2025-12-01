@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Functions</title>
+</head>
+<body>
+    <script>
+        // document.write("<h2>Function declaration</h2>")
+        // function sum()
+        // {
+
+        // }
+
+        // document.write("<h2>Pass Parameters</h2>")
+        // function sum(a,b)
+        // {
+
+        // }
+
+        document.write("<h2>Write function logic and call function by passing arguments</h2>")
+        function sum(a,b)
+        {
+          return a+b;
+        }
+        document.write(sum(2,3))
+
+        
+  
+
+
+        document.write("<h2>Write Arrow function</h2>")
+        const mulArrow=(x,y)=>
+        {
+            document.write(x*y)
+        }
+        mulArrow(3,6)
+
+
+
+        
+        document.write("<h2>Second Arrow function</h2>")
+        const division=(n1,n2)=>{
+            return n1/n2;
+        }
+        document.write(division(2,4));
+        
+
+
+
+        //forEach() method is only for array.
+        // It takes another function as a parameter it is called callBack function
+        //callBack() function takes 3 parameters 1.value 2.index/position 3.array
+
+        document.write("<h3>Array forEach Method</h3>")
+        let city=["Pune","Mumbai","Satara","Kolhapur","Nashik"]
+
+        city.forEach((val)=>{     
+            document.write(val);//Pune Mumbai Satara Kolhapur Nashik
+            //document.write(val,"<br>",index,"<br>",city,"<br>");//0 1 2 3 4 
+           // document.write(city);//Pune Mumbai Satara Kolhapur Nashik
+        })
+
+
+        //Higher Order Function or Higher Order Method it takes another function as a parameter or return another function as there output.
+        //forEach() is a Higher Order Method.
+        
+
+        //print the square of each array element using forEach()
+
+        document.write("<h3>print the square of each array element using forEach()</h3>")
+        let arr=[2,4,6,8,10]
+
+        arr.forEach((num)=>{
+            let square=num*num ;
+            document.write(square,"<br>")
+        })
+
+
+
+
+        document.write("<h3>Another way to calculate square of array element</h3>")
+        let arr1=[3,45,12];
+
+        let calSquare=(num)=>{
+            document.write(num*num, "<br>");
+        }
+
+        arr1.forEach(calSquare)
+
+
+
+
+
+        //map() method: Is used to create a new array.it takes callback() functions value to form a new array.
+
+        document.write("<h2>Arrays map() method.</h2>")
+        let numArr=[2,3,4,5,6]
+
+        let newArr=numArr.map((val)=>{
+            //document.write(val*val ,"<br>");
+            return val*val;
+        })
+        document.write(newArr)
+
+
+
+
+
+
+        //filter()  used to create a new array of elements that give a true for given condition.
+
+        document.write("<h2>filter() method</h2>")
+        let nums=[23,22,21,45,67,8,9,2,4,69,1,6];
+
+        let evnArr=nums.filter((num)=>{
+                return (num%2==0);
+        })
+        document.write(evnArr ,"<br>")
+        
+        
+
+
+        let nArr=[1,2,3,4,5]
+        let oddArr=nArr.filter((num)=>{
+            return num % 2 != 0;
+        })
+        
+        document.write(oddArr)
+
+
+        //reduce() : used to perform some operation and reduces array to a single value and return it. It takes two parameter.
+
+        document.write("<h2>find the sum of array elements.</h2>")
+
+        let arrr=[1,2,3,4,5]
+
+        let output=arrr.reduce((res,currVal)=>{
+            return res+currVal;
+        })
+        document.write(output)
+
+
+
+
+        document.write("<h2>find largest number from array</h2>")
+
+        let inputArr=[2,3,4,5,6,7,8,9,12,3,4,54]
+
+        let largenumArr=inputArr.reduce((pre,curr)=>{
+            return pre > curr ? pre : curr;
+        })
+        document.write(largenumArr)
+
+
+
+
+        document.write("<h2>Filter the marks which are 90+ from given marks array</h2>")
+
+        let marks=[50,67,60,70,78,92,54,98]
+
+        let newMarks=marks.filter((mark)=>{ 
+            return mark>90;
+        })
+        document.write(newMarks)
+
+
+
+        
+        document.write("<h2>create array upo n </h2>")
+        function arrFunc(n)
+        {
+            let userArr=[];
+            for(i=1;i<=n;i++)
+        {
+            document.write(userArr[i-1]=i);
+        }  
+
+        let addition=userArr.reduce((res,curr)=>{
+            return res+curr;
+        })
+        document.write("sum of all elements:",addition)
+
+        let fact=userArr.reduce((prev,curr)=>{
+            return prev*curr;
+        })
+        document.write("Factorial is:",fact)
+
+        }
+        arrFunc(9);
+
+        
+        
+
+
+       
+
+
+
+
+
+
+    </script>
+</body>
+</html>

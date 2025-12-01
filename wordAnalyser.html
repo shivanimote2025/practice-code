@@ -1,0 +1,366 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Analyser</title>
+    <style>
+
+        .container
+        {
+            text-align: center;
+            height: 400px;
+            width: 400px;
+            border: 1px,solid,black;
+            border-radius: 5px;
+            background-color: aliceblue;
+            padding: 5px;
+            margin: auto;
+        }
+
+        .inputdata
+        {
+            width: 400px;
+        }
+
+        input
+        {
+            padding: 4px;
+            font-size: medium;
+        }
+
+        button
+        {
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            background-color: blue;
+            color: white;
+        }
+
+        .letter_count
+        {
+            
+            text-align: left;
+        }
+
+        .vowel
+        {
+           
+            text-align: left;
+        }
+        .consonant
+        {
+            
+            text-align: left;
+        }
+
+        .upper
+        {
+            
+            text-align: left;
+        }
+
+        .lower
+        {
+           
+            text-align: left;
+        }
+
+        .reverse
+        {
+           
+            text-align: left;
+        }
+
+        .capital
+        {
+            
+            text-align: left;
+        }
+
+        .c_count
+        {
+           
+            text-align: left;
+        }
+       
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Word Analyser!</h1>
+
+        <div class="inputdata">
+           <strong>Enter Word: </strong> <input id="input" type="text" placeholder="Enter word">
+            <button onclick="analyseword()">Analyse</button>
+        </div>
+
+        
+
+         <div class="letter_count">
+            <p><b>Number Of Leters:</b> <span id="l_count"></span> </p>
+         </div>
+
+        <div class="vowel">
+          <p><b>Number Of Vowels: <span id="vowels"></span></b></p> 
+        </div>
+
+        <div class="consonant">
+            <p><b>Number Of Consonant:</b></p>
+        </div>
+
+        <div class="upper">
+            <p><b>UpperCase:</b> <span id="u"></span></p>
+        </div>
+
+        <div class="lower">
+            <p><b>LowerCase:</b><span id="l"></span></p>
+        </div>
+
+        <div class="reverse">
+            <p><b>Reverse Word:</b> <span id="rev"></span></p>
+        </div>
+
+        <div class="capital">
+            <p><b>Capitalize Word:</b><span id="c"></span></p>
+        </div>
+
+        <div class="c_count">
+            <p><b>Character Count:</b></p>
+        </div>
+
+           
+    </div>
+
+    <script>
+        function analyseword()
+        {
+            let word=document.getElementById("input").value;
+            document.getElementById("l_count").innerHTML=word.length;
+            document.getElementById("u").innerHTML=word.toUpperCase();
+            document.getElementById("l").innerHTML=word.toLowerCase();
+            document.getElementById("c").innerHTML=word.capitalize();
+            document.getElementById("rev").innerHTML=word.reversed();
+
+            // let reversed = "";
+            // for (let i = word.length - 1; i >= 0; i--) 
+            // {
+            //     reversed = reversed+word[i];  
+            // }
+            // document.getElementById("rev").innerText=reversed;
+            
+        
+        
+            
+        }
+    </script>
+</body>
+<!-- </html>  -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Analyser</title>
+    <style>
+        .container
+        {
+            margin: auto;
+            border: 1px solid black;
+            border-radius: 5px;
+            box-shadow: 5px;
+            height: 600px;
+            width: 500px;
+            text-align: center;
+            background-color: antiquewhite;
+            
+        }
+
+        .heading
+        {
+            margin-bottom: 30px;
+            margin-top: 40px;
+            color: blue;
+        }
+
+        .result
+        {
+            text-align: left;
+            margin:25px;
+        }
+        input
+        {
+            width: 230px;
+            padding: 5px;
+            font-size: larger;
+            color: blue;
+            border-radius:3px;
+            border: 1px solid black;
+        }
+        button
+        {
+            padding: 5px;
+            margin: 5px;
+            border: 1px,solid,black;
+            border-radius: 4px;
+            height: 35px;
+            width: 80px;
+            background-color: aqua;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+        .word
+        {
+            font-size:larger;
+            padding:10px;
+        }
+
+        #l_count
+        {
+            font-size:larger;
+            color:red;
+        }
+        #u
+        {   
+            font-size:larger;
+            color:red;
+        }
+
+        #l
+        {   
+            font-size:larger;
+            color:red;
+        }
+
+        #c
+        {   
+            font-size:larger;
+            color:red;
+        }
+
+        #r
+        {   
+            font-size:larger;
+            color:red;
+        }
+
+        #c_count
+        {
+            font-size:larger;
+            color:red;
+        }
+
+        #v_count
+        {
+            font-size:larger;
+            color:red;
+        }
+
+        #char_count
+        {
+            font-size:larger;
+            color:red;
+        }
+        #btn
+        {
+            width: 150px;
+            height: 40px;
+            color: black;
+            font-size: 20px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Word Analyser!</h1>
+        <div class="input">
+            <p class="word">
+                <strong>Enter any word:</strong><input type="text" name="" id="inputdata">
+                <button onclick="analyser()">Analyse</button>
+            </p>
+        </div>
+        <div class="result">
+            <p><strong>Number Of Leters:</strong><span id="l_count"></span></p>
+            <p><strong>Number Of Vowels:</strong><span id="v_count"></span></p>
+            <p><strong>Number Of consonant:</strong><span id="c_count"></span></p>
+            <p><strong>UpperCase:</strong><span id="u"></span></p>
+            <p><strong>LowerCase:</strong><span id="l"></span></p>
+            <p><strong>Capitalize:</strong><span id="c"></span></p>
+            <p><strong>Reverse:</strong><span id="r"></span></p>
+            <p><strong>Each Character Count:</strong><span id="char_count"></span></p>
+        </div>
+        <!-- <button id="btn" onclick="clear()">Clear</button> -->
+    </div>
+    <script>
+        function analyser()
+        {
+            word=document.getElementById("inputdata").value;
+            
+            document.getElementById("l_count").innerHTML=word.length;
+            document.getElementById("u").innerHTML=word.toUpperCase();
+            document.getElementById("l").innerHTML=word.toLowerCase();
+
+
+            let capitalize;
+            capitalize=word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+            document.getElementById("c").innerHTML=capitalize;
+
+
+            let reversed = "";
+            for (let i = word.length - 1; i >= 0; i--) 
+            {
+               reversed = reversed+word[i];
+            }
+            document.getElementById("r").innerHTML=reversed;
+
+
+
+            let count = 0;
+            let consonant_count=0;
+            const vowels = "aeiouAEIOU"; 
+            for (let i = 0; i < word.length; i++) 
+            {
+              if (vowels.includes(word[i]))
+                {
+                  count++;
+                }
+                else
+                {
+                    consonant_count++;
+                }
+            }
+            document.getElementById("v_count").innerHTML=count;
+            document.getElementById("c_count").innerHTML=consonant_count++;
+
+
+
+
+            
+        }
+
+
+
+        // function clear()
+        // {
+        //     document.getElementById("inputdata").innerText="";
+        //     document.getElementById("l_count").innerText="";
+        //     document.getElementById("v_count").innerText="";
+        //     document.getElementById("c_count").innerText="";
+        //     document.getElementById("u").innerText="";
+        //     document.getElementById("l").innerText="";
+        //     document.getElementById("c").innerText="";
+        //     document.getElementById("r").innerText="";
+        //     document.getElementById("counts").innerText="";
+        // }
+
+    </script>
+</body>
+</html>

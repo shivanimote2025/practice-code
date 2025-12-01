@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //Q1:
+
+    document.write("<h3>Write a function that finds the largest of three numbers.</h3>")
+    function largestFromThree(no1,no2,no3)
+    {
+      if(no1>no2 && no1>no3)
+    {
+      document.write(`${no1} is greater number`)
+    }
+    else if(no2>no1 && no2>no3)
+    {
+      document.write(`${no2} is greater number`)
+    }
+    else if(no1==no2 && no1==no3 && no2==no3 && no3==no1 && no3==no2)
+    {
+      document.write("Same numbers")
+    }
+    else{
+      document.write(`${no3} is greater number`)
+    }
+    }
+    largestFromThree(121,132,1211)
+
+
+    //Q2:
+
+    document.write("<h3>Write a function to calculate the square or cube of a number.</h3>")
+    function calSquareorCube(num)
+    {
+      document.write("square of number is:",num*num , "<br>");
+      document.write("cube of number is:",num*num*num);
+    }
+    calSquareorCube(8)
+
+
+
+
+    //Q3:
+
+    document.write("<h3>Write a function that takes a name and returns Hello, <name>!.</h3>")
+    function fullName(name)
+    {
+      document.write(`Hello ${name}!`);
+
+    }  
+    fullName("shivani")
+
+
+
+
+    //Q4:
+
+    document.write("<h3>Count the number of characters in a string.</h3>")
+    function countChar(str)
+    {
+      document.write("count of characters are:",str.length)
+    }
+    countChar("hello")
+
+
+    //Q5:
+
+    document.write("<h3>Convert a given string to uppercase and lowercase.</h3>")
+    function converUpperandLower(str1)
+    {
+      document.write("UppersCase string is:",str1.toUpperCase(),"<br>");
+      document.write("LowerCase string is:",str1.toLowerCase())
+    }
+    converUpperandLower("Hello Javascript")
+
+
+
+    //Q6:
+
+    document.write("<h3>Count how many vowels are in a string.</h3>")
+    function countVowels(str2)
+    {
+      let count=0;
+      for(let i=0;i<=str2.length;i++)
+    {
+      if(str2[i]=='a' || str2[i]=='e' || str2[i]=='i' || str2[i]=='O' || str2[i]=='u'
+        ||str2[i]=='A' || str2[i]=='E' || str2[i]=='I' || str2[i]=='O'|| str2[i]=='U'
+       )
+    {
+      count++;
+    }
+    }
+    document.write("count of vowels are:",count)
+    }
+    countVowels("aeiou")
+
+
+
+
+   //Q7:
+
+    document.write("<h2>Reverse a string without using the reverse() method.</h2>")
+    function revString(string1)
+    {
+      let reverse="";
+      for(let i=string1.length-1;i>=0;i--)
+    {
+      reverse=reverse+string1[i];
+    }
+    document.write(reverse)
+    }
+    revString("Shivani")
+
+
+
+
+    //Q8:
+
+    document.write("<h2>Check if a string is a palindrome.</h2>")
+    function palindromestr(st)
+    {
+      st=st.toLowerCase();
+      let rev=""
+      for(i=st.length-1;i>=0;i--)
+    {
+      rev=rev+st[i];
+    }
+    if(rev==st)
+    {
+      document.write("string is palindrome")
+    }
+    else{
+      document.write("string is Not palindrome")
+    }
+    }
+    palindromestr("Nan")
+
+
+
+
+
+    //Q9:
+    
+    document.write("<h2>Find how many times a particular letter appears in a string.</h2>")
+    function charCount(stringg)
+    {
+      let charCount=0;
+
+      let splitstr=stringg.split("");
+
+      splitstr.forEach((char)=>{
+        if(splitstr[i]==char)
+      {
+        charCount++;
+      }
+      else
+      {
+        charCount=1;
+      }
+       document.write(char,charCount,"<br>")
+      })
+    }
+   charCount("hello");
+   
+
+
+
+
+   //Q10:
+
+   document.write("<h2>Extract the first 5 characters of a string.</h2>")
+   function extractFiveChar(input_str)
+   {
+     
+     document.write(input_str.slice(0,5))
+   }
+   extractFiveChar("helloworld")
+
+
+
+   //Q11:
+
+   document.write("<h2>Replace all spaces in a string with -.</h2>")
+   function replaceSpace(input_string)
+   {
+  
+    //document.write(input_string.replace(/ /g,"-")) //g is a globle it replace all spaces with - not just first.
+
+    document.write(input_string.split(" ").join("-"))//split() converts string to array and then join with -.
+   }
+
+   replaceSpace("hello js how are you")
+
+
+
+
+
+   //Q12:
+
+
+   document.write("<h2>Split a sentence into words and count how many words there are.</h2>")
+   function splitSentence(sentence)
+   {
+    let splitsen=sentence.split(" ");
+    document.write(splitsen,"<br>")
+    document.write(`there are ${splitsen.length} words in given sentence`)
+
+   }
+   splitSentence("hello js how are you bye hello")
+
+
+
+
+   //Q13:
+
+
+   document.write("<h2>Write a function that capitalizes the first letter of each word in a sentence.</h2>")
+   //sen="my name is shivani" op=My Name Is Shivani
+   
+    
+    
+
+
+
+
+
+
+
+   //Array 
+
+   //Q1.
+
+   document.write("<h2>Create an array of 5 fruits and display them one by one.</h2>")
+
+   const fruits=["Apple","Banana","Mango","Orange","Papaya"]
+   document.write(fruits ,"<br>")
+
+  
+
+
+   //Q2: Add a new fruit to the end and beginning of the array.
+
+   fruits.push('Grapes')
+   document.write(fruits,"<br>")
+
+   fruits.unshift("Watermelon")
+   document.write(fruits,"<br>")
+
+
+
+   //Q3: Remove the last and first elements from an array.
+
+   fruits.pop();
+   document.write(fruits,"<br>")
+
+   fruits.shift();
+   document.write(fruits,"<br>")
+
+
+
+
+   //Q4: Merge two arrays into one.
+
+   const numbers=[1,2,3,4]
+   const mergeArr=fruits.concat(numbers)
+   document.write(mergeArr,"<br>")
+
+
+
+
+
+   //Q5: Find the index of a given element in an array.
+
+   document.write("index of banana is:",mergeArr.indexOf("Banana"),"<br>")
+
+   document.write("index of 4 is:",mergeArr.indexOf(4),"<br>")
+
+
+
+
+   //Q6: Sort an array of numbers in ascending order.
+    
+   //numbers.sort((a, b) => a-b); //for ascending order
+
+   numbers.sort((a,b)=>b-a)
+   document.write(numbers,"<br>")
+
+
+
+   //Q7: Reverse an array.
+    
+   document.write(fruits.reverse())
+
+
+
+
+   //Q8:
+
+   document.write("<h2>Find the largest and smallest number in an array.</h2>")
+
+   function largeArrnum(maxArr)
+   {
+    let maxel=maxArr[0];
+    for(i=0;i<maxArr.length;i++)
+   {
+    if(maxArr[i]>maxel)
+   {
+    maxel=maxArr[i];
+   }
+   }
+   return maxel;
+   }
+    document.write(largeArrnum([12,32,121,23,90]))
+
+
+
+
+
+
+
+
+
+
+    //Q9:
+
+    document.write("<h2>Filter out all even numbers from an array.</h2>")
+
+    function evenNumArr(evArr)
+    {
+      let e_arr=[];
+      for(i=0;i<evArr.length;i++)
+    {
+      if(evArr[i]%2==0)
+    {
+      e_arr.push(evArr[i])
+    }
+    }
+    return e_arr;
+    }
+    let res=evenNumArr([1,2,3,4,5,6,7,8,9,10,11,14])
+    document.write(res)
+
+
+
+
+
+    // function evnnumArr(num_arr)
+    // {
+    //    return num_arr.filter(num=>{
+    //     return num%2==0;
+    //    })
+    // }
+    // document.write(evnnumArr([2,1,3,4,5,6,23,12,90]))
+
+
+
+
+
+
+
+
+
+
+
+    //Q10:
+    
+    document.write("<h2>Create a new array that contains only strings longer than 5 characters.</h2>")
+
+    //arr=["hello","javascript","programming","language","buy","hjgyuhn"]  output=["javascript","programming","language","hjgyuhn"]
+
+     function getgreaterthanfivecharString(word)
+     {
+      let newArr=[];
+      for(i=0;i<word.length;i++)
+     {
+      if(word[i].length>5)
+     {
+      newArr.push(word[i])
+     }
+     }
+     return newArr;
+     }
+     let result=getgreaterthanfivecharString(["hello","javascript","programming","language","buy","hjgyuhn"])
+     document.write(result)
+
+
+
+
+
+
+    // const strArr=["apple","banana","orange","hi","bye","shivani","mango"]
+
+    // const newarrchar=strArr.filter((word)=>{
+    //    if(word.length>5)
+    //    {
+    //     return word;
+    //    }
+    // })
+    // document.write(newarrchar)
+
+
+
+
+
+
+  //  //Create a new array that contains only strings longer than 5 characters.(using function)
+  //   function newArrword(strArr)
+  //   {
+
+  //      return strArr.filter((word)=>{
+  //      return word.length>5;
+  //   })
+  //   }
+  //   document.write(newArrword(["apple","banana","orange","hi","bye","shivani","mango"]))
+
+
+
+  </script>
+</body>
+</html>
+
+
+
+
+
+

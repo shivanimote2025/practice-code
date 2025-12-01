@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Converter App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .container
+        {
+            background-color: aquamarine;
+            justify-content: center;
+            text-align: center;
+            margin:auto;
+            height: 450px;
+            width: 500px;
+            border-radius: 8px;
+            padding: 5px;
+        }
+        #pounds_weight
+        {
+            padding: 5px;
+            border-radius: 2px;
+            margin: 5px;
+        }
+
+
+        button
+        {
+            padding: 7px;
+            color:black;
+            background-color: red;
+            border-radius: 4px;
+            border: none;
+            width: 50%;
+            margin:10px ;
+            
+        }
+        button:hover{
+            background-color: green;
+            color: white;
+        }
+
+        #kg_weight
+        {
+            padding: 5px;
+            border-radius: 2px;
+            margin: 5px;
+        }
+        
+        #kg
+        {
+            margin-bottom: 5px;
+            border-radius: 2px;
+            font-size:20px;
+            color: brown;
+        }
+        #pw
+        {
+            font-size:20px;
+            color: brown;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weight Converter</h1>
+        <div class="row">
+            <form action="" id="myform">
+              <label for=""><b>Pounds:</b><input type="number" id="pounds_weight" placeholder="Enter weight in ponds"></label>
+              <br> 
+              <p ><b>Weight in KG:</b> <span id="kg"></span></p>
+
+              <br>
+              <label for=""><b>KG:</b><input type="number" id="kg_weight" placeholder="Enter weight in kg"></label>
+              <br>
+              <p><b>Weight in pound:</b><span id="pw"></span></p>
+              <button  type="button" onclick="WeightConverter()">Calculate</button><br>
+              <button  type="button" onclick="clearconversion()">Clear</button><br>
+
+            
+            </form>  
+        </div> 
+    </div>
+
+    <script>
+        function WeightConverter()
+        {  
+          pound=document.getElementById("pounds_weight").value;
+          if(pound==="")
+          {
+            document.getElementById("kg").innerHTML="";
+          }
+          else
+          {
+            pound=parseInt(pound);
+            let kgweight=pound*0.45359237;
+            document.getElementById("kg").innerHTML=kgweight.toFixed(2);
+         
+          }
+          
+          kg=document.getElementById("kg_weight").value;
+          if(kg=="")
+          {
+            document.getElementById("pw").innerHTML="";
+          }
+          else{
+            kg=parseInt(kg);
+            let poundweight=kg/0.45359237
+            document.getElementById("pw").innerHTML=poundweight.toFixed(2);
+          }
+        }
+        
+        function clearconversion()
+        {    
+            document.getElementById("myform").reset();
+            document.getElementById("kg").innerText="";
+            document.getElementById("pw").innerText="";
+            
+        }
+       
+    </script>
+</body>
+</html>

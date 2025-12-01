@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+
+    <style>
+
+      *{
+        margin: 0;
+        padding: 0;
+      }
+
+      body{
+        padding: 0;
+        font-family: 'Times New Roman', Times, serif;
+        background-color: cadetblue;
+      }
+
+      .container
+      {
+        margin: auto;
+        margin-top: 70px;
+        text-align: center;
+        height: 550px;
+        width: 400px;
+        border: 1px black solid;
+        border-radius: 5px;
+        background-color: aliceblue;
+        box-shadow: 10px gray;
+      }
+
+      h1
+      {
+        margin-top: 20px;
+      }
+      .container-fluid
+      {
+        display: flex;
+        flex-direction: column;
+        padding: 4px;
+        margin: 10px;
+      }
+      input
+      {
+        height: 20px;
+        width: 250px;
+        margin: 5px;
+        padding: 5px;
+        border: none;
+        border-radius: 3px;
+        font-size: medium;
+        background-color: aquamarine;
+      }
+
+      button
+      {
+        margin: 5px;
+        padding: 10px;
+        height: 30px;
+        width: 100px;
+        border: none;
+        background-color: rgb(111, 115, 115);
+        border-radius: 4px;
+        color: white;
+      }
+
+      button:hover
+      {
+        cursor: pointer;
+        box-shadow: 10px green;
+        background-color: cornsilk;
+        color: black;
+      }
+
+       #list
+        {
+          height: auto;
+          border: 1px solid black;
+          border: none;
+          border-radius: 2px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        #list li
+        {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            align-items: center;
+            list-style: none;
+            width: 250px;
+            height: 30px; 
+            font-size:20px;
+            text-align: left;
+            border: 1px solid black;
+            margin: 5px;
+            border-radius: 3px;
+            border:none;
+            background-color: cornflowerblue;
+            color: azure;
+        }
+
+        #total-amount
+        {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: larger;
+            color: blue;
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Expense Tracker!</h1>
+
+        <p id="total-amount"></p>
+
+        <div class="container-fluid">     
+            <h2 style="text-align: left;">Name:</h2><input type="text" id="name" placeholder="Enter description"><br>
+            <h2 style="text-align: left;">Amount:</h2><input type="number" id="amount" placeholder="Enter amount"><br>
+            <button id="expensebtn">Add Expense</button>
+        </div>
+
+        <ul id="list"></ul>
+
+    </div>
+
+    <script>
+
+      let totalamount=0;
+      let addexpense=document.getElementById("expensebtn")
+
+      addexpense.addEventListener("click",function()
+      {
+        let name=document.getElementById("name");
+        let amount=document.getElementById("amount");
+        let amt=Number(amount.value);
+        let list=document.getElementById("list");
+        let total=document.getElementById("total-amount")
+
+        if(name.value === "" || amt ==="")
+        {
+          alert("Please enter some description")
+        }
+        else
+        {
+          let newli=document.createElement("li")
+          newli.innerHTML=`${name.value} - ${amt}`
+          list.appendChild(newli)
+
+          totalamount=totalamount+amt;
+          document.getElementById("total-amount").innerHTML=`Tatal amount - ₹${totalamount}`;
+
+          removeExpense(newli,amt);
+        }
+
+         name.value="";
+         amount.value="";
+           
+      });
+
+
+      function removeExpense(newli,amt)
+      {
+        let remove=document.createElement("button")
+        remove.innerText="Remove"
+        remove.style.borderRadius="20px";
+        remove.style.padding="10px";
+        remove.style.width="60px"
+        newli.appendChild(remove)
+            
+
+        remove.addEventListener("click",function()
+        {
+
+          totalamount=totalamount-amt;
+          document.getElementById("total-amount").innerHTML=`Tatal amount - ₹${totalamount}`;   
+          newli.remove();
+
+        })
+      }
+
+
+
+    </script>
+
+
+</body>
+</html>

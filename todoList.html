@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        body
+        {
+            padding: 0;
+            margin: 0;
+            background-color: cadetblue;
+        }
+        .container
+        {
+            height: auto;
+            width: 80vh;
+            background-color: burlywood;
+            color: black;
+            margin: auto;
+            border-radius: 9px;
+            /* text-align: center; */
+        }
+        h2
+        {
+            text-align: center;
+            padding:5vmin;
+            font-size:5vmin;
+        }
+        #addtask
+        {
+            margin: 2vmin;
+            height: 7vmin;
+            width: 50vmin;
+            border: none;
+            border-radius: 1vmin;
+            font-size: 4vmin;
+        }
+        .box
+        {
+            text-align: center;
+        }
+        #addbtn
+        {
+            height: 7vmin;
+            width: 15vmin;
+            border: none;
+            border-radius: 1vmin;
+            font-size: 3vmin;
+            background-color: aquamarine;
+        }
+        #addbtn:hover
+        {
+            background-color: chartreuse;
+        }
+
+        #addedtask
+        {
+            height: 40vmin;
+            border: 1px solid black;
+            border: none;
+            border-radius: 2px;
+        }
+
+        #addedtask li
+        {
+            display: flex;
+            justify-content: space-evenly;
+            list-style: none;
+            width: 60vh;
+            font-size:4vmin ;
+            text-align: center;
+            border: 1px solid black;
+            margin: 5px;
+            border-radius: 3px;
+            border:none;
+            /* background-color:blueviolet; */
+            /* color: white; */
+        }
+        
+        #addedtask li button
+        {
+            border: none;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content:space-between;
+            /* margin: auto; */
+            /* padding: 20px; */
+        }
+        #addedtask li button:hover{
+            background-color:rgb(160, 156, 160);
+            color: black;
+        }
+
+        #count
+        {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            /* background-color:yellow; */
+            color: white;
+            border-radius: 9px;
+        }
+        .completed
+        {
+            text-decoration: line-through;
+            color:green;
+        }
+
+
+    </style>
+</head>
+<body>
+    <p id="count">0</p>
+    <div class="container">
+        
+        <h2>To Do List</h2>
+        <div class="box">
+            <input type="text" placeholder="Enter a Task" id="addtask">
+            <button id="addbtn">Add Task</button>
+        </div>
+        <ul id="addedtask">
+        </ul>
+    </div>
+
+    <script>
+
+        let addbtn=document.getElementById("addbtn")
+
+        addbtn.addEventListener("click",function()
+        {
+            let addtask=document.getElementById("addtask");
+            if(addtask.value === "")
+        {
+            alert("Please enter a task!")
+        }
+        else
+        { 
+            let newli=document.createElement("li");
+            newli.innerText=addtask.value;
+
+            let taskList=document.getElementById("addedtask")
+            taskList.appendChild(newli)
+
+            removeTask(newli);
+            taskcount()
+            completeTask(newli);
+           
+        } 
+        addtask.value="";
+        });
+
+        function taskcount()
+        {
+            let items=document.querySelectorAll("li")
+            document.getElementById("count").innerText=`Total task count is:${items.length}`
+        }
+
+
+        function removeTask(newli)
+        {
+            let deletebtn=document.createElement("button")
+            deletebtn.innerText="Delete";
+            newli.appendChild(deletebtn)
+
+            deletebtn.addEventListener("click",function()
+            {
+                newli.remove();
+                taskcount();
+            })
+        
+        }
+        function completeTask(newli)
+        {
+            let completeTaskbtn=document.createElement("button")
+            completeTaskbtn.innerText="Complete";
+            newli.appendChild(completeTaskbtn)
+            
+
+            completeTaskbtn.addEventListener("click",function(){
+                newli.classList.add("completed")
+                
+            })
+        }
+
+    </script>
+</body>
+</html>

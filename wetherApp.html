@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wether App!</title>
+
+    <style>
+
+        *
+        {
+            padding: 0;
+            margin: 0;
+        }
+        body
+        {
+            margin: auto;
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background-color: grey;
+        }
+        main
+        {
+            border: 1px solid black;
+            margin: auto;
+            margin-top:40px;
+            height: 200px;
+            width: 300px;  
+            background-color: blanchedalmond;
+            color: black;
+            border-radius: 3px;
+            border: none;
+            box-shadow: 0 0 0 2px white;
+        }
+        .container
+        {
+            margin-top: 30px;
+        }
+        h2
+        {
+            margin-top:50px;
+            padding: 5px;
+        }
+        input
+        {
+            padding: 5px;
+            height: 15px;
+            width: 200px;
+            font-size: medium;
+            margin: 8px;
+            border: none;
+            border-radius: 3px;
+        }
+        button
+        {
+            margin:10px;
+            height: 25px;
+            width: 100px;
+            border: none;
+            border-radius: 4px;
+            background-color: gray;
+            color: white;
+        }
+        button:hover
+        {
+            background-color: white;
+            color: black;
+            box-shadow: 0 0 0 1px black;
+            cursor: pointer;
+        }
+
+        #wether
+        {
+            margin-top: 30px;
+            padding: 10px;
+            font-size: 30px;
+            color:white;
+            
+        }
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <h2>Wether App</h2>
+        <div class="container">
+            <strong>City:</strong><input type="text" id="city" placeholder="Enter a name of city"><br>
+            <button id="showWether">showWether</button>
+        </div>
+    </main>
+
+    <div id="wether"></div>
+
+    <script>
+
+        let showbtn=document.getElementById("showWether");
+        let showwether=document.getElementById("wether");
+
+        const weatherData = 
+        {
+            Mumbai: {temp: 30, status: "Sunny"},
+            Delhi: {temp: 25, status: "Cloudy"},
+            Pune: {temp: 20, status: "Sunny"},
+            Nagpur: {temp: 29, status: "Cloudy"}
+        };
+
+        showbtn.addEventListener("click",function()
+        {
+            let city=document.getElementById("city").value;
+            let newcity=city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
+            if(newcity === "")
+        {
+           alert("Enter a city");
+           return;
+        }   
+
+        if(weatherData[newcity])
+        {
+            showwether.innerHTML=`temp:${weatherData[newcity].temp}°C<br>
+                                  status:${weatherData[newcity].status} `
+        }
+        else
+        {
+            showwether.innerHTML="City not found!"
+        }
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Scheme Switcher</title>
+    <style>
+        body{
+            margin: auto;
+            text-align: center;
+        }
+        #heading
+        {
+            margin: 10vmin;
+        }
+        .container
+        {
+            height: 30vh;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2vmin;
+            justify-content: center;
+            margin-top: 20vmin;
+        }
+        .grey-color{
+            height: 10vh;
+            width: 10vh;
+            border: 1px solid black;
+            background-color: grey;
+        }
+        .white-color
+        {
+            height: 10vh;
+            width: 10vh;
+            border: 1px solid black;
+            background-color: white;
+        }
+        .yellow-color
+        {
+            height: 10vh;
+            width: 10vh;
+            border: 1px solid black;
+            background-color: yellow;
+        }
+        .purple-color
+        {
+            height: 10vh;
+            width: 10vh;
+            border: 1px solid black;
+            background-color: purple;
+        }
+        .blue-color
+        {
+            height: 10vh;
+            width: 10vh;
+            border: 1px solid black;
+            background-color:blue;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="heading">Color Scheme Switcher</h1>
+    <div class="container">
+        <div class="grey-color" id="grey"></div>
+        <div class="white-color" id="white"></div>
+        <div class="yellow-color" id="yellow"></div>
+        <div class="purple-color" id="purple"></div>
+        <div class="blue-color" id="blue"></div>
+    </div>
+    <h2>Click one of the color above</h2>
+    <h2><span>to change the background color</span></h2>
+
+    <script>
+
+        
+        let btns=document.querySelectorAll(".container")
+        let body=document.querySelector("body")
+
+        btns.forEach(function(btn){
+           console.log(btn)
+            btn.addEventListener("click",function(e){
+                console.log(e)
+                console.log(e.target)
+               if(e.target.id==='grey')
+               {
+                body.style.backgroundColor=e.target.id;
+               }
+
+               if(e.target.id==='white')
+               {
+                body.style.backgroundColor=e.target.id;
+               }
+
+               if(e.target.id==='yellow')
+               {
+                body.style.backgroundColor=e.target.id;
+               }
+
+               if(e.target.id==='purple')
+               {
+                body.style.backgroundColor=e.target.id;
+               }
+
+               if(e.target.id==='blue')
+               {
+                body.style.backgroundColor=e.target.id;
+               }
+            })
+        })
+    </script>
+</body>
+</html>
