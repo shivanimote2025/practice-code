@@ -154,12 +154,14 @@
            
         } 
         addtask.value="";
+        saveData();
         });
 
         function taskcount()
         {
             let items=document.querySelectorAll("li")
             document.getElementById("count").innerText=`Total task count is:${items.length}`
+            
         }
 
 
@@ -173,6 +175,7 @@
             {
                 newli.remove();
                 taskcount();
+                saveData();
             })
         
         }
@@ -190,6 +193,20 @@
                // newli.classList.add("completed")
             })
         }
+        
+        //saveData() and showTask() both function is sed to see tasklist as it is on browser after refreshing it
+        function saveData()
+        {
+            localStorage.setItem("data", addedtask.innerHTML);
+        }
+
+        function showTask()
+        {
+            addedtask.innerHTML=localStorage.getItem("data");
+        }
+
+        showTask();
+        taskcount(); //showing task count after refersh browser
 
     </script>
 </body>
