@@ -140,7 +140,10 @@
         else
         { 
             let newli=document.createElement("li");
-            newli.innerText=addtask.value;
+            let span = document.createElement("span");
+            span.innerText = addtask.value;
+            newli.appendChild(span);
+            //newli.innerText=addtask.value;
 
             let taskList=document.getElementById("addedtask")
             taskList.appendChild(newli)
@@ -180,9 +183,11 @@
             newli.appendChild(completeTaskbtn)
             
 
-            completeTaskbtn.addEventListener("click",function(){
-                newli.classList.add("completed")
-                
+            completeTaskbtn.addEventListener("click",function()
+            {
+                let span = newli.querySelector("span");
+                span.classList.add("completed");
+               // newli.classList.add("completed")
             })
         }
 
