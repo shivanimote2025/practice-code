@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qwiz Question App</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        body{
+            background-color: blueviolet;
+        }
+
+        .qwiz-app
+        {
+            background-color: aliceblue;
+            width: 90%;
+            max-width: 600px;
+            margin: 100px auto 0;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .qwiz
+        {
+            margin: 10px;
+        }
+
+        #q-name{
+            border-bottom: 1px solid black;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+
+        #question
+        {
+            font-size: 25px;
+            font-weight: 400;
+            color: black;
+        }
+
+        .btn
+        {
+            border: 1px solid black;
+            width: 100%;
+            font-weight:500;
+            font-size:15px;
+            margin: 10px 0;
+            height: 30px;
+            border-radius: 3px;
+            background-color: azure;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover.btn:hover:not([disabled])
+        {
+            background-color:black;
+            color:white;
+        }
+
+        .btn:disabled{
+            cursor: no-drop;
+        }
+
+        #next-btn
+        {
+            height: 30px;
+            width: 150px;
+            padding: 8px;
+            font-weight:700;
+            background-color: navy;
+            color: white;
+            border-radius: 2px;
+            cursor: pointer;
+            margin: 20px auto 0;
+            border: 0;
+            transition: all 0.4s;
+            display: none;
+        }
+
+        #next-btn:hover
+        {
+            background-color: rgb(216, 216, 227);
+            color: rgb(11, 10, 10);
+        }
+
+        .correct{
+            background-color: aquamarine;
+        }
+
+        .incorrect{
+            background-color: rgb(237, 91, 91);
+        }
+
+        
+
+        
+    </style>
+</head>
+<body>
+    <div class="qwiz-app">
+        <p id="q-name">1 out of 10</p>
+        <div class="qwiz">
+            <h2 id="question">Question</h2>
+            <div id="answer-buttons">
+                <button class="btn">Answer1</button>
+                <button class="btn">Answer2</button>
+                <button class="btn">Answer3</button>
+                <button class="btn">Answer4</button>
+            </div>
+        </div>
+        <button id="next-btn">Next</button>
+    </div>    
+    <script>
+        
+        const questions=
+        [
+            {
+                question:"What does CPU stand for?",
+                answers:[
+                    {text:"Central Process Unit",correct:false},
+                    {text:"Central Processing Unit",correct:true},
+                    {text:"Computer Personal Unit",correct:false},
+                    {text:"Control Processing Unit",correct:false}
+                ]  
+            },
+
+            {
+                question:"Which device is used to type letters and numbers?",
+                answers:[
+                    {text:"Mouse",correct:false},
+                    {text:"keyboard",correct:true},
+                    {text:"Monitor",correct:false},
+                    {text:"Printer",correct:false}
+                ]
+            },
+
+            {
+                question:"What is the brain of the computer?",
+                answers:[
+                    {text:"Monitor",correct:false},
+                    {text:"Keyboard",correct:false},
+                    {text:"CPU",correct:true},
+                    {text:"Mouse",correct:false}
+                ]       
+            },
+
+
+            {
+                question:"Which of the following is an input device?",
+                answers:[
+                    {text:"Printer",correct:false},
+                    {text:"Monitor",correct:false},
+                    {text:"Keyboard",correct:true},
+                    {text:"Speaker",correct:false}
+                ]
+            },
+
+
+            {
+                question:"What does RAM stand for?",
+                answers:[
+                    {text:"Read Access Memory",correct:false},
+                    {text:"Random Access Memory",correct:true},
+                    {text:"Run Access Memory",correct:false},
+                    {text:"Rapid Action Memory",correct:false}
+                ]
+            },
+
+
+            {
+                question:"Which device shows output on the screen?",
+                answers:[
+                    {text:"CPU",correct:false},
+                    {text:"Keyboard",correct:false},
+                    {text:"Monitor",correct:true},
+                    {text:"Mouse",correct:false}
+                ]
+            },
+
+
+            {
+                question:"Which of these is software?",
+                answers:[
+                    {text:"Mouse",correct:false},
+                    {text:"Keyboard",correct:false},
+                    {text:"Windows",correct:true},
+                    {text:"Monitor",correct:false}
+                ]
+            },
+
+
+            {
+                question:"What is used to click and select items on a computer?",
+                answers:[
+                    {text:"Keyboard",correct:false},
+                    {text:"CPU",correct:false},
+                    {text:"Mouse",correct:true},
+                    {text:"Printer",correct:false}
+                ]
+            },
+
+
+
+            {
+                question:"Which of the following stores data permanently?",
+                answers:[
+                    {text:"RAM",correct:false},
+                    {text:"Cache",correct:false},
+                    {text:"Hard Disk",correct:true},
+                    {text:"Register",correct:false}
+                ]
+            },
+
+
+
+            {
+                question:"What is a computer?",
+                answers:[
+                    {text:"A machine that cooks food",correct:false},
+                    {text:"A machine that plays only games",correct:false},
+                    {text:"A machine that processes data",correct:true},
+                    {text:"A machine that prints papers",correct:false}
+                ]
+            },
+        ]
+
+
+        let questionEle=document.getElementById("question")
+        let answerEle=document.getElementById("answer-buttons")
+        let nextBtn=document.getElementById("next-btn")
+        let currtenQNo=document.getElementById("q-name")
+
+        let questionIndex=0;
+        let score=0;
+
+
+
+        function startQwiz()
+        {
+            let questionIndex=0;
+            let score=0;
+            nextBtn.innerText="Next"
+
+            showQuestions()
+        }
+
+
+
+
+        function showQuestions()
+        {
+            resetPrevQuestionandAnswers();
+            let currentQuestion=questions[questionIndex]//array of questions
+            currtenQNo=questionIndex+1 
+            currtenQNo.innerHTML=`${currtenQNo} out of 10`
+            questionEle.innerHTML=currentQuestion.question
+
+            currentQuestion.answers.forEach(answer =>{
+                const button=document.createElement('button');
+                button.innerHTML=answer.text;
+                button.classList.add('btn');
+                answerEle.appendChild(button);
+                if(answer.correct)
+            {
+                button.dataset.correctAns=answer.correct;
+               
+            }
+            button.addEventListener("click",selectAns)
+            })
+            
+        }
+
+
+
+
+        function resetPrevQuestionandAnswers()
+        {
+            nextBtn.style.display="none";
+            while(answerEle.firstChild)
+        {
+            answerEle.removeChild(answerEle.firstChild);
+        }
+        }
+
+
+
+        function selectAns(e)
+        {
+            let selectedAnswer=e.target;
+            let correctAnswer=selectedAnswer.dataset.correctAns==="true";
+            if(correctAnswer)
+        {
+            selectedAnswer.classList.add("correct")
+            score++;
+        }
+        else{
+            selectedAnswer.classList.add("incorrect")
+            
+        }
+
+        Array.from(answerEle.children).forEach(button=>{
+            if(button.dataset.correct ==='true')
+        {
+            button.classList.add("correct")
+        }
+        button.disabled=true;
+        })
+
+        nextBtn.style.display="block";
+        }
+
+
+        startQwiz()
+    </script>
+</body>
+</html>
