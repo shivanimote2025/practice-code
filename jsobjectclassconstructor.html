@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Object!</title>
+</head>
+<body>
+    <script>
+
+        //object literal : it is a key values pair inside {} curly braces.
+        //we can write a function as a peoperty inside object.
+        const student = 
+        {
+            fullName :'abc a',
+            age : '19',
+            salary : '20000',
+            getSalary:function(){
+                return `${this.fullName} salary is ${this.salary} `;
+            }
+        }
+        // console.log(student)
+        //console.log(student.getSalary())
+        // console.log(Object.keys(student))
+        // console.log(Object.values(student))
+
+        const book1={
+            title : 'Book1',
+            Author : 'author1',
+            year : '2013',
+            getSummery : function(){
+                return `${this.title} author is ${this.Author} was read in ${this.year}`;
+            } 
+        }
+       // console.log(book1.getSummery())
+
+        //constructor is a special method inside a class and when we create a new object it runs automatically and fill data inside it.
+
+        function Book(title,author,year){
+            this.title=title,
+            this.author=author,
+            this.year=year
+        }
+         
+        
+        const book2=new Book('book2','author2','2013')
+        const book3=new Book('book3','author3','2017')
+
+        console.log(book2.title)
+        console.log(book3.year)
+        console.log(book2.author)
+
+        console.log(Object.keys(book2));
+        console.log(Object.values(book2))
+
+        // class Railwayform{
+        //     constructor(name,trainno,address)
+        //     {
+        //         this.name=name;
+        //         this.trainno=trainno;
+        //         this.address=address;
+        //     }
+        //     submit()
+        //     {
+        //         alert(`${this.name} form is submitted for  train no: ${this.trainno} , ${this.address}`)
+        //     }
+        //     cancle()
+        //     {
+        //         this.trainno=0;
+        //         alert(`${this.name} form is cancle train no: ${this.trainno}  address is ${this.address}`)
+        //     }
+
+        // }
+
+        // let c1=new Railwayform('customer1',1234,'pune')
+        // let c2=new Railwayform('customer2',2345,'Mumbai')
+
+        // c1.submit()
+        // c2.submit()
+        // c2.cancle()
+
+
+        class Person{
+            constructor(fname,age,address){
+                this.fname=fname;
+                this.age=age;
+                this.address=address;
+            }
+            introduction(name,age,address)
+            {
+                this.fname=name;
+                this.age=age;
+                this.address=address;
+                return `Hello GM.My name is ${this.fname}.I am ${this.age} years old.I am from ${this.address}.Thank You!`
+            }
+
+            changeAddress(newAddress)
+            {
+                this.address=newAddress;
+                return  `Hello GM.My name is ${this.fname}.I am ${this.age} years old.I am from ${this.address}.Thank You!`
+            }
+
+        }
+
+        let p1=new Person()
+        console.log(p1.introduction('shivani',24,'pune'))
+        console.log(p1.changeAddress('hydrabad'))
+        console.log(p1.introduction('person1',10,'nashik'))
+
+        
+
+
+
+
+        class BankAccount{
+            constructor(name,balance)
+            {
+                this.name=name;
+                this.balance=balance;
+            }
+
+            getBalance(accNo)
+            {
+                this.balance=0;
+                return `your banck balance is: ${this.balance}`        
+            }
+
+            deposit(dAmmount)
+            {
+                if(dAmmount<0)
+            {
+                return 'Invalid';
+            }
+            else
+            {
+               this.balance=this.balance+dAmmount;
+               return `your Deposited balance is: ${this.balance}` 
+            }
+                
+            }
+
+            withdrawal(withdraw_amm)
+            {
+                if(withdraw_amm<0)
+            {
+                return 'Invalid ammount';
+            }
+
+            this.balance=this.balance-withdraw_amm;
+            return `your Available balance is: ${this.balance}` 
+                
+            }
+        }
+
+        let b1=new BankAccount()
+        console.log(b1.getBalance('345678923456'))
+        console.log(b1.deposit(50000))//50000
+        console.log(b1.withdrawal(10000))//40000
+        console.log(b1.deposit(5000))//45000
+        console.log(b1.withdrawal(10000))//35000
+
+
+
+        class Rectangle{
+            constructor(length,width)
+            {
+                this.length=length;
+                this.width=width;
+            }
+            area()
+            {
+                let rect_area=this.length*this.width;;
+                return rect_area;
+            }
+            squareArea()
+            {
+                let squareArea=this.length*this.length;
+                console.log('Area of Square is:',squareArea)
+            }
+           
+        }
+
+        let r=new Rectangle(5,3)
+        r.area()
+
+        let squAre=new Rectangle(3)
+        squAre.squareArea()
+
+
+
+
+
+        class TodoList{
+            constructor(tasks)
+            {
+                this.tasks=[];
+            }
+            addTask(taskName,id)
+            {   
+                const task=
+                {
+                    id:id,
+                    name:taskName,
+                    is_completed:false
+                }
+                this.tasks.push(task);
+                console.log('added task is:',this.tasks)
+            }
+
+            completeTask(taskName)
+            {
+                for(let task of this.tasks)
+            {
+                if(task.name===taskName)
+            {
+                task.is_completed=true;
+                console.log(taskName,'is completed')
+            }
+            }
+            }
+
+            getCompletedTasks()
+            {
+                const completed_tasks=[];
+                for(let task of this.tasks) 
+                { 
+                    if(task.is_completed===true)
+                {
+                    completed_tasks.push(task)
+                }
+                }  
+                return completed_tasks;    
+            }
+
+            getPendingTasks()
+            {
+                const pending_Tasks=[];
+                for(let task of this.tasks)
+            {
+                if(task.is_completed!==true)
+            {
+                pending_Tasks.push(task)
+            }
+            }
+            return pending_Tasks;
+            }
+
+            getAllTasks()
+            {
+                const all_Tasks=[];
+                for(let task of this.tasks)
+            {
+                all_Tasks.push(task)
+            }
+            return all_Tasks;
+            }
+        }
+        
+        let t1=new TodoList()
+
+        t1.addTask('learn js',0)
+        t1.addTask('learning completed',1)
+        t1.addTask('buy eggs',2)
+        t1.addTask('buy buiscuits',3)
+        t1.addTask('buy pens',4)
+
+        t1.completeTask('learn js',0)
+        t1.completeTask('buy eggs',2)
+
+        console.log(t1.getCompletedTasks())
+        console.log(t1.tasks)
+
+        console.log(t1.getPendingTasks())
+        console.log(t1.getAllTasks())
+       
+    </script>
+</body>
+</html>
