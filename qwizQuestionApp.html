@@ -58,10 +58,11 @@
             transition: all 0.3s;
         }
 
-        .btn:hover.btn:hover:not([disabled])
+        .btn:hover:not([disabled])
         {
             background-color:black;
             color:white;
+            
         }
 
         .btn:disabled{
@@ -235,7 +236,7 @@
         let questionEle=document.getElementById("question")
         let answerEle=document.getElementById("answer-buttons")
         let nextBtn=document.getElementById("next-btn")
-        let currtenQNo=document.getElementById("q-name")
+        let currentQNo=document.getElementById("q-name")
 
         let questionIndex=0;
         let score=0;
@@ -244,13 +245,14 @@
 
         function startQwiz()
         {
-            let questionIndex=0;
-            let score=0;
+            questionIndex=0;
+            score=0;
             nextBtn.innerText="Next"
 
             showQuestions()
         }
 
+       
 
 
 
@@ -258,8 +260,7 @@
         {
             resetPrevQuestionandAnswers();
             let currentQuestion=questions[questionIndex]//array of questions
-            currtenQNo=questionIndex+1 
-            currtenQNo.innerHTML=`${currtenQNo} out of 10`
+            currentQNo.innerHTML = `${questionIndex + 1} out of ${questions.length}`;
             questionEle.innerHTML=currentQuestion.question
 
             currentQuestion.answers.forEach(answer =>{
@@ -269,8 +270,7 @@
                 answerEle.appendChild(button);
                 if(answer.correct)
             {
-                button.dataset.correctAns=answer.correct;
-               
+                button.dataset.correct=answer.correct;
             }
             button.addEventListener("click",selectAns)
             })
@@ -291,22 +291,23 @@
 
 
 
-        function selectAns(e)
+        function selectAns(ans)
         {
-            let selectedAnswer=e.target;
-            let correctAnswer=selectedAnswer.dataset.correctAns==="true";
+            let selectedAnswer=ans.target;
+            let correctAnswer=selectedAnswer.dataset.correct === "true";
             if(correctAnswer)
         {
             selectedAnswer.classList.add("correct")
             score++;
         }
-        else{
-            selectedAnswer.classList.add("incorrect")
-            
+        else
+        {
+            selectedAnswer.classList.add("incorrect")   
         }
 
+
         Array.from(answerEle.children).forEach(button=>{
-            if(button.dataset.correct ==='true')
+            if(button.dataset.correct === "true")
         {
             button.classList.add("correct")
         }
@@ -315,6 +316,42 @@
 
         nextBtn.style.display="block";
         }
+
+
+
+        function showScore()
+        {
+            resetPrevQuestionandAnswers();
+            questionEle.innerHTML=`You scored ${score} out of ${questions.length}!`
+            nextBtn.innerHTML="Play Again!"
+            nextBtn.style.display="block"
+        }
+
+
+        function  handleNextBtn()
+        {
+            questionIndex++;
+            if(questionIndex < questions.length)
+        {
+            showQuestions();
+        }
+        else 
+        {
+            showScore()
+        }
+        }
+
+
+        nextBtn.addEventListener("click",()=>{
+            if(questionIndex < questions.length)
+        {
+            handleNextBtn();
+        }
+        else
+        {
+            startQwiz()
+        }
+        })
 
 
         startQwiz()

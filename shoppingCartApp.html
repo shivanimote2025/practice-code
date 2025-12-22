@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Application</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">  
+<body style="background-color: gainsboro;">
+    <div class="container mt-2">
+        <h1 class="text-center font-weight-normal text-dark">Product List</h1>
+    </div>
+
+    <div class="cards d-flex flex-row justify-content-center m-4 flex-wrap">
+        <div class="card flex-column m-2" style="width: 15rem;" id="p1">
+            <img src="images/j1.webp" class="card-img-top" style="width: 15rem; height: 15rem;" >
+            <div class="card-body">
+                <p class="card-text">Zavya Jewellery Waterfall Necklace</p>
+                <h6 class="text-success mb-4">₹7,699</h6>
+                <button class="btn btn-primary" onclick="addToCart('images/j1.webp','Zavya Jewellery Waterfall Necklace', 7699)">Add to cart</button>
+            </div>
+        </div>
+
+        <div class="card flex-column m-2" style="width: 15rem;" id="p2">
+            <img src="images/j2.webp" class="card-img-top" style="width: 15rem; height: 15rem;">
+            <div class="card-body">
+                <p class="card-text">Myntra Anouk Gold Plated American Diamond Studded & Beaded Jewellery Set</p>
+                <h6 class="text-success mb-4">₹1,386</h6>
+               <button class="btn btn-primary" onclick="addToCart('images/j2.webp', 'Myntra Anouk Gold Plated American Diamond Studded & Beaded Jewellery Set', 1386)">Add to cart</button>
+            </div>
+        </div>
+
+        <div class="card flex-column m-2" style="width: 15rem;" id="p3">
+            <img src="images/j3.webp" class="card-img-top" style="width: 15rem; height: 15rem;">
+            <div class="card-body">
+                <p class="card-text">Sukkhi Women's Glitzy Gold Plated Rani Pink Studded Choker Necklace Set</p>
+                <h6 class="text-success mb-4">₹425</h6>
+                <button class="btn btn-primary" onclick="addToCart('images/j3.webp', 'Sukkhi Women\'s Glitzy Gold Plated Rani Pink Studded Choker Necklace Set', 425)"> Add to cart</button>
+            </div>
+        </div>
+
+
+        <div class="card flex-column m-2" style="width: 15rem;" id="p4">
+            <img src="images/j4.webp" class="card-img-top" style="width: 15rem; height: 15rem;">
+            <div class="card-body">
+                <p class="card-text">Zaveri Pearls CZ-Studded Necklace & Earrings</p>
+                <h6 class="text-success mb-4">₹879</h6>
+                <button class="btn btn-primary" onclick="addToCart('images/j4.webp', 'Zaveri Pearls CZ-Studded Necklace & Earrings',879)">Add to cart</button>
+            </div>
+        </div>
+        <!-- <h3>Added Products</h3> -->
+        <ul id="cartproducts"></ul>
+        <!-- <button style="width: 50px; height: 50px; border: none; background-color: blue; color: white;">Buy Now</button> -->
+
+
+    </div>
+    
+    <script>
+
+        let cartProducts=[];
+
+        function addToCart(img,name,price)
+        {
+            let product={
+                image:img,
+                name:name,
+                price:price
+            }
+
+            cartProducts.push(product);
+
+            displayAddedProducts()
+        }
+        
+         function displayAddedProducts()
+        {
+            let cartItems=document.getElementById("cartproducts")//ul                                                        
+            cartItems.innerHTML=""
+
+            cartProducts.forEach(item => {
+
+                let newli=document.createElement("li")
+                newli.style.listStyle="none";
+                newli.style.margin="10px 0";
+                cartItems.appendChild(newli)
+
+                // let image=document.createElement("img")
+                // img.style.width="50px"
+                // img.style.height="50px"
+                // img.src=`${item.image}`
+                // newli.appendChild(image)
+
+
+                newli.innerHTML += `
+                    <img src="${item.image}" width="50" height="50">
+                    ${item.name} - ₹${item.price}
+                `;
+
+
+                // cartItems.innerHTML += `
+                // <li style="list-style:none; margin:10px 0;">
+                //     <img src="${item.image}" width="50" height="50">
+                //     ${item.name} - ₹${item.price}
+                // </li> 
+                // `;
+            });
+
+            
+
+            let buybtn=document.createElement("button")
+            buybtn.innerText="Buy Now"
+            buybtn.style.width="90px"
+            buybtn.style.height="30px"
+            buybtn.style.border="0px"
+            buybtn.style.borderRadius="4px"
+            buybtn.style.backgroundColor="blue"
+            buybtn.style.color="white"
+            cartItems.appendChild(buybtn) 
+
+            //buybtn.addEventListener("click",buyProduct)
+        }
+
+        
+
+    </script>
+</body>
+</html>
